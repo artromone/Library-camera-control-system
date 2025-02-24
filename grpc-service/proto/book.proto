@@ -1,11 +1,11 @@
 syntax = "proto3";
-option go_package = ".;book";
+option go_package = "github.com/artromone/lccs/grpc-service/proto";
 
 service BookService {
-  rpc CreateBook(Book) returns (BookResponce);
-  rpc GetBook(BookID) returns (Book);
-  rpc UpdateBook(Book) returns (BookResponce);
-  rpc DeleteBook(BookID) returns (DeleteResponce);
+  rpc CreateBook(Book) returns(BookResponse);
+  rpc GetBook(BookID) returns(Book);
+  rpc UpdateBook(Book) returns(BookResponse);
+  rpc DeleteBook(BookID) returns(DeleteResponse);
 }
 
 message Book {
@@ -15,14 +15,8 @@ message Book {
   string status = 4;
 }
 
-message BookID {
-  string id = 1;
-}
+message BookID { string id = 1; }
 
-message BookResponce {
-  string id = 1;
-}
+message BookResponse { string id = 1; }
 
-message DeleteResponce {
-  bool success = 1;
-}
+message DeleteResponse { bool success = 1; }
