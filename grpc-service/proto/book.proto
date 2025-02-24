@@ -1,4 +1,5 @@
 syntax = "proto3";
+package book;
 option go_package = "github.com/artromone/lccs/grpc-service/proto";
 
 service BookService {
