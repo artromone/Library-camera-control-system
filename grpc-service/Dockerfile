@@ -1,6 +1,6 @@
 FROM golang:1.23.4-alpine AS builder
 
-WORKDIR /app
+WORKDIR /build
 
 COPY go.mod go.sum ./
 
@@ -10,14 +10,15 @@ COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o grpc-server ./cmd/main.go
 
-FROM alpine:latest 
+
+FROM alpine:3.21.3
 
 WORKDIR /app
 
-COPY --from=builder /app/grpc-server .
+COPY --from=builder /build/grpc-server .
+RUN chmod +x ./grpc-server
 
 COPY migrations ./migrations
-
 COPY proto ./proto
 
 EXPOSE 50051
