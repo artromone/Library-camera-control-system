@@ -31,20 +31,20 @@ func (s *BookServer) CreateBook(ctx context.Context, req *proto.Book) (*proto.Bo
 	return &proto.BookResponse{Id: book.ID}, nil
 }
 
-func toProtoBook(b *book.Book) *book.Book {
-	return &book.Book{
-		ID:     b.ID,
-		Title:  b.Title,
-		Author: b.Author,
-		Status: b.Status,
-	}
-}
+// func toProtoBook(b *book.Book) *book.Book {
+// 	return &book.Book{
+// 		ID:     b.ID,
+// 		Title:  b.Title,
+// 		Author: b.Author,
+// 		Status: b.Status,
+// 	}
+// }
 
-func toDBBook(pbBook *book.Book) *book.Book {
-	return &book.Book{
-		ID:     pbBook.ID,
-		Title:  pbBook.Title,
-		Author: pbBook.Author,
-		Status: pbBook.Status,
-	}
-}
+// func toDBBook(pbBook *book.Book) *book.Book {
+// 	return &book.Book{
+// 		ID:     pbBook.ID,
+// 		Title:  pbBook.Title,
+// 		Author: pbBook.Author,
+// 		Status: pbBook.Status,
+// 	}
+// }
