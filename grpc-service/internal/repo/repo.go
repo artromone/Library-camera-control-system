@@ -8,4 +8,5 @@ import (
 
 type BookRepository interface {
 	Create(ctx context.Context, book *models.Book) error
+	Get(ctx context.Context, id string) (*models.Book, error)
 }

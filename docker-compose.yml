@@ -15,6 +15,15 @@ services:
       DB_NAME: library
     # volumes:
     #  - .:/app
+ 
+  rest-server:
+    build: ./rest-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - grpc-server
+    environment:
+      GRPC_SERVER_ADDR: grpc-server:50051
 
   postgres:
     image: postgres:17-alpine

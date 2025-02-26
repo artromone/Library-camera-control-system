@@ -18,3 +18,7 @@ func NewBookService(repo repo.BookRepository) *BookService {
 func (s *BookService) CreateBook(ctx context.Context, book *models.Book) error {
 	return s.repo.Create(ctx, book)
 }
+
+func (s *BookService) GetBook(ctx context.Context, id string) (*models.Book, error) {
+	return s.repo.Get(ctx, id)
+}

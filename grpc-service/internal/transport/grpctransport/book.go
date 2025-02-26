@@ -31,6 +31,14 @@ func (s *BookServer) CreateBook(ctx context.Context, req *proto.Book) (*proto.Bo
 	return &proto.BookResponse{Id: book.ID}, nil
 }
 
+func (s *BookServer) GetBook(ctx context.Context, req *proto.BookID) (*proto.Book, error) {
+	if b, err := s.service.GetBook(ctx, req.Id); err != nil {
+		return nil, err
+	} else {
+		return &proto.Book{Id: b.ID, Author: b.Author, Status: b.Status, Title: b.Title}, nil
+	}
+}
+
 // func toProtoBook(b *book.Book) *book.Book {
 // 	return &book.Book{
 // 		ID:     b.ID,
